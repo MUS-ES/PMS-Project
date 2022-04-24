@@ -1,0 +1,113 @@
+/* Start Global Rules */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+    
+}
+
+/* End Global Rules */
+
+/* Start Variables */
+:root {
+   --dashboard-background-color:rgb(230, 230, 230);
+
+}
+
+/* End Variables */
+
+/* Start Component */
+
+/* Side-Container */
+.side-container {
+
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+
+/* Container */
+.container {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* End Component */
+
+/* Start Dashboard */
+.dashboard {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-areas: "side side main main main main main main main main";
+    background-color: var(--dashboard-background-color);
+
+}
+
+/* End Dashboard */
+/* Start Nav */
+.sidenav {
+    grid-area: side;
+    background-color: black;
+    color:white;
+}
+.sidenav .menu{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.sidenav .menu .option{
+    flex-basis: 100%;
+    
+}
+.sidenav .menu .option div ul{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left:10px;
+   
+}
+.sidenav .menu .option a{
+    text-decoration: none;
+    flex-basis: 100%;
+}
+/* End Nav */
+/* Start main */
+.main {
+    grid-area: main;
+    background-color: var(--dashboard-background-color);
+margin-top:10px;}
+
+.main .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    gap:10px;
+}
+.main .container div{
+    flex-basis: 100%;
+}
+
+.main .container hr{
+    flex-basis: 100%;
+    background-color: red !important;
+
+}
+
+
+
+
+/* End main */
+
+
+
+/* Start Header */
+.main .header{
+    text-transform: capitalize;
+}
+/* End Header */

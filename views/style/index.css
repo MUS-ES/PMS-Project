@@ -1,0 +1,527 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat:wght@200&family=Poppins:wght@200;300;400;500;600;700;800&family=Sacramento&display=swap');
+
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/*Universal Selector that select all the elements inside our page
+    and then we wanna get rid of all the default paddings and margins*/
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  /*make sure of it*/
+  background-color: #FF6D55;
+  /*#FD5D5D*/
+  padding: 2rem;
+  display: flex;
+  /*the main will turn to flex container*/
+  align-items: center;
+  /*Vertically Alignment*/
+  justify-content: center;
+  /*Horizontaly Alignment*/
+}
+
+
+
+
+body, input
+
+/*for the font to apply changes for input*/
+  {
+  font-family: "Poppins", sans-serif;
+
+}
+
+.chkbox {
+  position: relative;
+  left: 5px;
+  top: 3px;
+  cursor: pointer;
+}
+
+.box {
+  /*the child of the flex container (main) which is (box div) will turn to flex item */
+  position: relative;
+  width: 100%;
+  max-width: 1020px;
+  /*the box div will shrink to fit in the screen in smaller windows*/
+  height: 770px;
+  background-color: white;
+  border-radius: 3.2rem;
+  box-shadow: 50px
+    /*Hor*/
+    60px
+    /*Ver*/
+    35px
+    /*Blur*/
+    -35px
+    /*shadowSize*/
+    rgba(1, 0, 0, 0.3);
+}
+
+.inner-box {
+  position: absolute;
+  width: calc(100% - 4rem);
+  /*to take the whole width of its parent minus 4.1rem = 65.6px*/
+  height: calc(100% - 4rem);
+  /*to take the whole height of its parent minus 4.1rem = 65.6px*/
+  left: 50%;
+  /*center the left corner of the innerbox*/
+  top: 50%;
+  /*center the top of the innerbox*/
+  transform: translate(-50%, -50%);
+  /*to transllate the innerbox*/
+
+}
+
+.forms-wrap {
+  position: absolute;
+  height: 100%;
+  /*to take a 100% of height from its parent's height*/
+  width: 45%;
+  /*to take a 45% of width from its parent's width*/
+  top: 0;
+  /*to ensure that it will locate completely on the top of its parent(innerbox)*/
+  left: 0;
+  /*to ensure that it will locate completely on the left of its parent(innerbox)*/
+  display: grid;
+  /*now this div will turn into a grid container,and our two form(signin and signup) will turn into grid item.
+                  so we want our signin form and signup form to be at the same level of location becuse until now the signup
+                  form will be underneath the other one.
+                  Finally that will allows us to create different columns and rows
+                  to align the grid items within those columns and rows*/
+  grid-template-columns: 1fr;
+  /*it is gonna create one column with a width of one fraction(part) of the available space*/
+  grid-template-rows: 1fr;
+  transition: 0.8s ease-in-out;
+  align-content: space-around;
+  /*ease-in-out is the speed type or the animation will start slowly and end end slowly again
+                                And we put it in here instead of (main.sign-up-mode||sign-in-form .forms-wrap) so we can apply changes to both forms because this class div has the same in both*/
+}
+
+.carousel {
+  position: absolute;
+  height: 100%;
+  width: 55%;
+  top: 0;
+  left: 45%;
+  /*to ensure that it will locate starting from 45% point of its parent(innerbox)
+              on the left(this point where the form will end from the left with)*/
+  background-color: #FFE9E2;
+  /* FFE1D4*/
+  border-radius: 2rem;
+  transition: 0.8s ease-in-out;
+  /*we put this here to response correctky and made make animatoin while we navigate to the sign-in form and sign-up form*/
+}
+
+.logo {
+  display: flex;
+  /*to make both the img and the title located next to each other
+                  because css flexbox puts the flex items item in one row by default*/
+  align-items: center;
+  /*to make sure that our flex items will be vertically centered*/
+  justify-content: center;
+}
+
+.logo img {
+  width: 100px;
+  margin-right: 0.6rem;
+  opacity: 0.7;
+}
+
+/*form.sign-in-form {
+  display: none;
+}*/
+
+form {
+  max-width: 300px;
+  /*to adjust the form window inside its elements' parent(forms-wrap)*/
+  width: 100%;
+  margin: 0 auto;
+  /*to adjust its dimentions to 0 on top and bottom and auto on legt
+                   and right depending on its elements' parent(forms-wrap)*/
+  height: 100%;
+  display: flex;
+  /*we set it because the direct children of the form (logo heading actual form divs willbe flex items)*/
+  flex-direction: column;
+  /*to make the items go vertically*/
+  justify-content: space-evenly;
+  /*to justify the space between all the element*/
+  grid-column: 1/2;
+  /*we want them to start in the first col line and end on the second col line*/
+  grid-row: 1/2;
+  /*the same thing above but for the rows*/
+  /*After that the both forms will be at the same location level*/
+
+
+
+  /*Now we don't want the form to change as soon as we click on
+  the toggle button instead we want it to change behind the carousel div */
+  transition: opacity
+    /*(we will add a delay before we change the opacity)*/
+    0.02s
+    /*(duration)*/
+    0.4s
+    /*(because we need the form change at the middle of the slider which is the half of 0.8s)*/
+  ;
+
+}
+
+form.sign-up-form {
+  opacity: 0;
+  /*to hide the sign up form*/
+  pointer-events: none;
+  /*the sign-up form won't capture our click events or our curser options and make our signin form annoying*/
+}
+
+.logo h4 {
+  font-size: 1.3rem;
+  margin-top: -10px;
+  letter-spacing: -0.5px;
+  /*the distance between the letters*/
+  color: #3d1a94ea;
+}
+
+.sign-up-mode .heading{
+  margin-bottom: 15px;
+}
+.heading h2 {
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: #3d1a94cf;
+}
+
+.heading h6 {
+  font-size: 0.90rem;
+  color: #bababa;
+  font-weight: 400;
+  display: inline;
+  /*to make the sign-up anchor tag locate next to it*/
+}
+
+.sign {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #FF6D55;
+  text-decoration: none;
+}
+
+.sign:hover {
+  color: #3d1a94cf;
+  /*FFE1D4*/
+  transition: 0.3s;
+  /*for hovering*/
+}
+
+.inputandlabel {
+  position: relative;
+  /*to mess around with the inputs and the labels inside of them*/
+  height: 37px;
+  margin-bottom: 1.8rem;  
+
+}
+
+.input-field {
+  position: absolute;
+  /*to make the un and pw words locate inside our lables*/
+  width: 100%;
+  /*to make its width as same as its parent's width*/
+  height: 100%;
+  /*to make its height as same as its parent's height*/
+  background: none;
+  /*to get rid of the default input color*/
+  border: none;
+  outline: none;
+  /*when you move ur curser to the input its out line will appear but they'v gone*/
+  border-bottom: 1px solid #FFE1D4;
+  padding: 0;
+  /*to make sure that the text will attached be to left edge*/
+  font-size: 0.95rem;
+}
+
+label {
+  position: absolute;
+  left: 0;
+  /*to make it attached to the left edge*/
+  top: 50%;
+  transform: translateY(-50%);
+  /*to center it vertically to the input field*/
+  font-size: 0.95rem;
+  color: #bbb;
+  pointer-events: none;
+  /*to make the lables clickable*/
+}
+
+.input-field.active {
+  border-bottom-color: #FF6D55;
+  transition: 0.4s;
+  color: #FF6D55;
+}
+
+.input-field.active ~label {
+  font-size: 0.75rem;
+  top: -2px;
+  transition: 0.4s;
+}
+
+.sign-btn {
+  display: inline-block;
+  /*to adjust width and height*/
+  width: 100%;
+  /*the same width of its parent(actualform)*/
+  height: 43px;
+  background-color: #FF6D55;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  /*to show a cursor while hovering*/
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.sign-btn:hover {
+  background-color:rgb(250, 241, 241);
+  transition: 0.6s;
+  color:#FF6D55
+}
+
+.text {
+  color: #bbb;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.text a {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #FF6D55;
+  text-decoration: none;
+}
+
+.text a:hover {
+  color: #3d1a94cf;
+  transition: 0.3s
+}
+
+main.sign-up-mode .forms-wrap
+
+/*now the main element has that sign-up-mode class we are gonna take the forms-wrap div and move55% from the left*/
+  {
+  left: 55%;
+  /*to locate it where the carousel div start from the left*/
+}
+
+main.sign-up-mode .carousel {
+  left: 0;
+  /*to locate it where the forms-wrap div start before */
+}
+
+main.sign-up-mode form.sign-in-form {
+  /*Now in in order to hide the log-in form after clicking on the sign-up button and show the sign-up form*/
+  opacity: 0%;
+  /*1.we need to hide the sign in form*/
+  pointer-events: none;
+  /*2.to prevent any action while moving*/
+}
+
+main.sign-up-mode form.sign-up-form {
+  opacity: 1;
+  pointer-events: all;
+  /*to make the form respond for any input actions or clicking*/
+}
+
+.drugs-background {
+  position: absolute;
+  right: 0;
+  margin-top: 1px;
+  width: 95%;
+  height: 550px;
+}
+
+#pharmacy-img {
+  position: absolute;
+  left: 3px;
+  top: 22.7rem;
+  width: 42%;
+
+}
+
+.text-holder {
+  position: absolute;
+  bottom: 6rem;
+  left: 2rem;
+  font-weight: 700;
+  color: #3D1A80;
+  max-height: 5px;
+  display: inline;
+}
+
+
+/* Media Queries */
+@media (max-width: 850px) {
+  .box {
+    height: auto;
+    max-width: 550px;
+    overflow: hidden;
+  }
+
+  .inner-box {
+    position: static;
+    transform: none;
+    width: revert;
+    height: revert;
+    padding: 2rem;
+  }
+
+  .forms-wrap {
+    position: revert;
+    width: 100%;
+    height: auto;
+  }
+
+  form {
+    max-width: revert;
+    padding: 1.5rem 2.5rem 2rem;
+    transition: transform 0.8s ease-in-out, opacity 0.4s linear;
+  }
+
+  .heading {
+    margin: 2rem 0;
+  }
+
+.form.sign-up-form {
+  transform: translateX(100%);
+}
+
+main.sign-up-mode form.sign-in-form {
+  transform: translateX(-45%);
+}
+
+main.sign-up-mode form.sign-up-form {
+  transform: translateX(0%);
+}
+
+.carousel {
+    position: revert;
+    height: auto;
+    width: 100%;
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.image-holder {
+  display: none;
+}
+
+.text-holder {
+  font-size: 0.9rem;
+  position: absolute;
+  bottom: 5.8rem;
+  left: 3.5rem;
+  }
+
+}
+
+@media (max-width: 530px) {
+  main {
+    padding: 1rem;
+  }
+
+  .box {
+    border-radius: 2rem;
+  }
+
+  .innerbox {
+    padding: 1rem;
+  }
+
+  .carousel {
+    padding: 1.5rem 1rem;
+    border-radius: 1.6rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .text-holder {
+    position: absolute;
+    bottom: 4.1rem;
+    left: 3.5rem;
+    font-size: 0.7rem;
+  }
+
+  form {
+    padding: 1rem 2rem 1.5rem;
+  }
+}
+/* End Of Media Queries */
+
+
+.inputandlabel .error {
+  display: block;
+  transform: translateY(-50%);
+  position: absolute;
+  top: 40%;
+  right: 10%;
+  padding :3px 25px 3px 5px;
+  width: max-content;
+  z-index: 2;
+  background-color: white;
+  border: 1px solid #FF6D55;
+  border-radius: 10px;
+  font-size: 11px;
+  color: brown;
+  overflow: hidden;
+  opacity: 0;
+  
+}
+
+
+
+.inputandlabel i {
+  position: absolute;
+  opacity: 0;
+  right: 12%;
+  top: 40%;
+  transform: translateY(-50%);
+  color: #FF6D55;
+  z-index: 3;
+}
+
+.inputandlabel i.active {
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.inputandlabel i:hover+.error {
+ opacity: 1;
+  transition: 0.6s;
+ 
+  
+}
+
+#signin-error{
+  display: none;
+  text-align: center;
+  margin-top:-10px;
+  margin-bottom: 13px;
+  font-size: 0.90rem;
+  text-transform: capitalize;
+  color:#ff3f1f;
+  
+}
+#signin-error.active{
+  display: block;
+  
+  
+}
+
